@@ -10,8 +10,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import java.io.File;
 
-
-public class postController extends BaseController{
+public class postController extends BaseController {
     @FXML
     private AnchorPane commentBox;
     @FXML
@@ -27,15 +26,45 @@ public class postController extends BaseController{
     @FXML
     private Label time;
 
-
     public void setDescriptions(String des){
         descriptions.setText(des);
+    }
+
+    public void setUserDetails(String userName, String profilePhotoPath) {
+        // Set user name
+        name.setText(userName);
+
+        // Set profile photo
+        if (profilePhotoPath != null && !profilePhotoPath.isEmpty()) {
+            try {
+                // Load image directly from the database URL
+                Image profileImage = new Image(profilePhotoPath);
+                profile.setFill(new ImagePattern(profileImage));
+            } catch (Exception e) {
+                System.out.println("Error loading profile photo: " + e.getMessage());
+                setDefaultProfilePhoto();
+            }
+        } else {
+            setDefaultProfilePhoto();
+        }
+    }
+
+    private void setDefaultProfilePhoto() {
+        try {
+            String defaultPhotoPath = "src/main/resources/org/example/unishpere/images/default-profile.png";
+            File defaultFile = new File(defaultPhotoPath);
+            if (defaultFile.exists()) {
+                Image defaultImage = new Image(defaultFile.toURI().toString());
+                profile.setFill(new ImagePattern(defaultImage));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public void setImage(String imageUrl) {
         if (imageUrl != null && !imageUrl.isEmpty()) {
             try {
-                // Assuming imageUrl is a valid path to the image
                 File file = new File(imageUrl);
                 if (file.exists()) {
                     // Load the image
@@ -56,13 +85,9 @@ public class postController extends BaseController{
         }
     }
 
-
     @FXML
     public void initialize() {
         String defaultPhotoPath = "src/main/resources/img/defaultPhoto.png";
         loadProfilePhoto(profile, defaultPhotoPath);
     }
-
-
-
 }

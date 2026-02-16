@@ -10,10 +10,11 @@
    <children>
       <ImageView fitHeight="1019.0" fitWidth="1920.0" onDragDetected="#goToServicePage" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/Home.png" />
+            <Image url="@../../../img/HomeNew.png" />
          </image>
       </ImageView>
-      <Button layoutX="1442.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToServicePage" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: 0;" />
-      <Circle fx:id="profile" fill="DODGERBLUE" layoutX="1606.0" layoutY="55.0" onMouseClicked="#openProfilePopup" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="1310.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToServicePage" prefHeight="39.0" prefWidth="80.0" style="-fx-background-color: 0;" />
+      <Circle fx:id="profile" fill="DODGERBLUE" layoutX="1617.0" layoutY="56.0" onMouseClicked="#openProfilePopup" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="1154.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToMessagePage" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: 0;" />
    </children>
 </AnchorPane>

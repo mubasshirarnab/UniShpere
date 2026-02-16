@@ -37,10 +37,24 @@ public class servicesController {
     @FXML
     public void goToToLetPage(ActionEvent event) throws IOException
     {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("toLet.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void goToMessagePage(ActionEvent event) throws IOException
+    {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("messagePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
         stage.setScene(scene);
         stage.show();
     }
@@ -48,12 +62,71 @@ public class servicesController {
     @FXML
     public void goToPeerTutoringPage(ActionEvent event) throws IOException
     {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("peerTutoring.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void goToClothsRentalPage(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("clothesRental.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
         stage.show();
+    }
+
+    @FXML
+    public void goToResourcesPage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("deptCourses.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void goToCyclePage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("cycle.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void goToShuttlePage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("shuttle.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void goBack(ActionEvent event) {
+        // Get the previous scene from the stack
+        Scene previousScene = Navigation.popScene();
+
+        if (previousScene != null) {
+            // Set the previous scene to the stage
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(previousScene);
+            stage.show();
+        } else {
+            System.out.println("No previous page in history.");
+        }
     }
 
     @FXML

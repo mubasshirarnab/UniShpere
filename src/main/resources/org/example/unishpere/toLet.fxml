@@ -14,7 +14,7 @@
    <children>
       <ImageView fitHeight="1080.0" fitWidth="1920.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../img/To-Let.png" />
+            <Image url="@../../../img/all.png" />
          </image>
       </ImageView>
       <AnchorPane layoutY="104.0" prefHeight="990.0" prefWidth="1920.0" style="-fx-background-color: FLORALWHITE;">
@@ -44,5 +44,13 @@
       </AnchorPane>
       <Button fx:id="home" layoutX="1013.0" layoutY="30.0" mnemonicParsing="false" onAction="#goToHomePage" prefHeight="49.0" prefWidth="97.0" style="-fx-background-color: 0;" />
       <Circle fx:id="profile" fill="DODGERBLUE" layoutX="1616.0" layoutY="55.0" onMouseClicked="#openProfilePopup" radius="35.0" stroke="BLACK" strokeType="INSIDE" />
+      <Button layoutX="20.0" layoutY="34.0" mnemonicParsing="false" onAction="#goBack" prefHeight="41.0" prefWidth="82.0" style="-fx-background-color: 0;" />
+      <ImageView fitHeight="70.0" fitWidth="82.0" layoutX="20.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../img/goBack.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="1156.0" layoutY="36.0" mnemonicParsing="false" onAction="#goToMessagePage" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: 0;" />
+      <Button layoutX="1300.0" layoutY="35.0" mnemonicParsing="false" onAction="#goToServicePage" prefHeight="39.0" prefWidth="95.0" style="-fx-background-color: 0;" />
    </children>
 </AnchorPane>

@@ -55,6 +55,33 @@ public class peerTutoringController {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    public void goToMessagePage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("messagePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void goBack(ActionEvent event) {
+        // Get the previous scene from the stack
+        Scene previousScene = Navigation.popScene();
+
+        if (previousScene != null) {
+            // Set the previous scene to the stage
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            stage.setScene(previousScene);
+            stage.show();
+        } else {
+            System.out.println("No previous page in history.");
+        }
+    }
 
     @FXML
     public void openProfilePopup() {

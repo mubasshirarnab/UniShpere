@@ -6,41 +6,43 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="400.0" style="-fx-background-color: #FFFAF0; -fx-background-radius: 10;" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="430.0" prefWidth="400.0" style="-fx-background-color: white; -fx-background-radius: 20; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.2), 10, 0, 0, 0);" styleClass="accepted-card" stylesheets="@../../../css/cards.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.unishpere.acceptedRequestCardonRequesterSideController">
    <children>
-      <Label layoutX="29.0" layoutY="98.0" prefHeight="20.0" prefWidth="115.0" text="Course name :">
+      <Circle fx:id="photo" fill="DODGERBLUE" layoutX="200.0" layoutY="80.0" radius="50.0" stroke="BLACK" strokeType="INSIDE" />
+      <Label fx:id="name" alignment="CENTER" layoutX="50.0" layoutY="130.0" prefHeight="30.0" prefWidth="300.0" stylesheets="@../../../css/cards.css" text="Name" textAlignment="CENTER">
          <font>
-            <Font name="Georgia Bold" size="15.0" />
+            <Font name="System Bold" size="20.0" />
          </font>
       </Label>
-      <Label layoutX="29.0" layoutY="144.0" prefHeight="19.0" prefWidth="126.0" text="Problem Topic :">
+      <Label fx:id="course" alignment="CENTER" layoutX="50.0" layoutY="174.0" prefHeight="25.0" prefWidth="300.0" styleClass="course-label" stylesheets="@../../../css/cards.css" text="Course" textAlignment="CENTER">
          <font>
-            <Font name="Georgia Bold" size="15.0" />
+            <Font size="16.0" />
          </font>
       </Label>
-      <Button layoutX="33.0" layoutY="370.0" mnemonicParsing="false" prefHeight="46.0" prefWidth="103.0" style="-fx-background-color: #FFFACD; -fx-border-color: #F5DEB3; -fx-border-width: 2; -fx-background-radius: 100;" text="MESSAGE" textFill="#5b4651">
+      <Label fx:id="topic" alignment="CENTER" layoutX="50.0" layoutY="203.0" prefHeight="25.0" prefWidth="300.0" styleClass="topic-label" stylesheets="@../../../css/cards.css" text="Topic" textAlignment="CENTER">
          <font>
-            <Font name="System Bold" size="13.0" />
+            <Font size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="description" alignment="CENTER" layoutX="25.0" layoutY="234.0" prefHeight="90.0" prefWidth="350.0" styleClass="description-label" stylesheets="@../../../css/cards.css" text="Description" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutX="53.0" layoutY="324.0" prefHeight="30.0" prefWidth="144.0" style="-fx-text-fill: #3498db;" styleClass="accepted-message" stylesheets="@../../../css/cards.css" text="Accepted by:" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Label fx:id="accepterName" layoutX="143.0" layoutY="324.0" prefHeight="30.0" prefWidth="194.0" style="-fx-text-fill: #2980b9;" styleClass="accepted-message" stylesheets="@../../../css/cards.css" text="Accepter Name" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="16.0" />
+         </font>
+      </Label>
+      <Button fx:id="messageButton" layoutX="125.0" layoutY="368.0" mnemonicParsing="false" onAction="#handleMessageButton" prefHeight="40.0" prefWidth="150.0" style="-fx-background-color: #e67e22; -fx-background-radius: 20;" styleClass="message-button" stylesheets="@../../../css/cards.css" text="MESSAGE" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Label fx:id="description" alignment="CENTER" layoutX="25.0" layoutY="182.0" prefHeight="109.0" prefWidth="351.0" textAlignment="JUSTIFY" wrapText="true" />
-      <Label fx:id="topic" alignment="CENTER" layoutX="157.0" layoutY="142.0" prefHeight="27.0" prefWidth="212.0" />
-      <Label fx:id="course" alignment="CENTER" layoutX="157.0" layoutY="96.0" prefHeight="27.0" prefWidth="212.0" />
-      <Circle fx:id="photo" fill="DODGERBLUE" layoutX="50.0" layoutY="40.0" radius="26.0" stroke="BLACK" strokeType="INSIDE" />
-      <Label fx:id="name" alignment="TOP_LEFT" layoutX="84.0" layoutY="26.0" prefHeight="30.0" prefWidth="233.0">
-         <font>
-            <Font name="Georgia Bold Italic" size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="29.0" layoutY="301.0" prefHeight="46.0" prefWidth="308.0" text="Congratulations! Your request has been accepted by  : " wrapText="true">
-         <font>
-            <Font name="Georgia Bold Italic" size="17.0" />
-         </font>
-      </Label>
-      <Label layoutX="155.0" layoutY="357.0" prefHeight="36.0" prefWidth="239.0">
-         <font>
-            <Font name="Georgia Bold Italic" size="15.0" />
-         </font>
-      </Label>
    </children>
 </AnchorPane>

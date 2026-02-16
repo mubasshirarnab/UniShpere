@@ -46,6 +46,40 @@ public class to_letController implements Initializable {
         stage.setScene(scene);
         stage.show();
     }
+    @FXML
+    public void goToMessagePage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("messagePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void goToServicePage(ActionEvent event) throws IOException
+    {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("services.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    @FXML
+    public void goBack(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("services.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
 
     @FXML
     public void openPopup(ActionEvent event) {
@@ -87,62 +121,51 @@ public class to_letController implements Initializable {
             PostDAO postDAO = new PostDAO();
             List<Post> posts = postDAO.getPostsFromDatabase();
 
-            HBox row = null; // Row container (horizontal box)
-            int postCount = 0; // Counter for posts added
+            HBox row = null;
+            int postCount = 0;
 
             for (Post post : posts) {
                 if (postCount % 2 == 0) {
-                    // Create a new row (HBox) for every two posts
                     row = new HBox();
-                    row.setSpacing(20); // Space between posts in a row
+                    row.setSpacing(20);
                     row.setAlignment(Pos.CENTER);
-
-                    // Add style to the HBox (row)
                     row.setStyle("-fx-spacing: 20; -fx-alignment: center;");
                     postsContainer.getChildren().add(row);
                 }
 
-                // Load the post.fxml dynamically
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("posts.fxml"));
                 AnchorPane postAnchorPane = fxmlLoader.load();
 
-                // Configure the post content via its controller (optional)
                 postController controller = fxmlLoader.getController();
-                controller.setDescriptions(post.getCaption()); // Set the post description from DB
-                controller.setImage(post.getPhotoUrl()); // Set the image URL from DB
+                controller.setDescriptions(post.getCaption());
+                controller.setImage(post.getPhotoUrl());
+                controller.setUserDetails(post.getUserName(), post.getUserProfilePhoto());
 
-                // Add style to each post (AnchorPane) with a colorful border
                 postAnchorPane.setStyle(
-                        "-fx-background-color: #ffffff;" +
-                                "-fx-border-width: 3;" +
-                                "-fx-border-radius: 10;" +
-                                "-fx-background-radius: 10;" +
-                                "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 5);" +
-                                "-fx-padding: 15;" +
-                                "-fx-min-width: 400;" + // Width of each post
-                                "-fx-min-height: 250;"  // Height of each post
+                    "-fx-background-color: #ffffff;" +
+                    "-fx-border-width: 3;" +
+                    "-fx-border-radius: 10;" +
+                    "-fx-background-radius: 10;" +
+                    "-fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 10, 0, 0, 5);" +
+                    "-fx-padding: 15;" +
+                    "-fx-min-width: 400;" +
+                    "-fx-min-height: 250;"
                 );
 
-                // Add the post to the current row
                 row.getChildren().add(postAnchorPane);
-
                 postCount++;
             }
 
-            // Set the VBox with rows as the content of the ScrollPane
             ScrollPane scrollPane = new ScrollPane(postsContainer);
-            scrollPane.setFitToWidth(true); // Ensure rows fit the width of the ScrollPane
-
-            // Add style to the ScrollPane
+            scrollPane.setFitToWidth(true);
             scrollPane.setStyle(
-                    "-fx-background-color: transparent;" +
-                            "-fx-border-color: #dcdcdc;" +
-                            "-fx-border-radius: 10;" +
-                            "-fx-padding: 10;" +
-                            "-fx-border-width: 2;"
+                "-fx-background-color: transparent;" +
+                "-fx-border-color: #dcdcdc;" +
+                "-fx-border-radius: 10;" +
+                "-fx-padding: 10;" +
+                "-fx-border-width: 2;"
             );
 
-            // Replace the existing VBox in the FXML with the populated ScrollPane
             vBox.getChildren().clear();
             vBox.getChildren().add(scrollPane);
 

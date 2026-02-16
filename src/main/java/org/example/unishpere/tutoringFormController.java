@@ -2,6 +2,7 @@ package org.example.unishpere;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -15,7 +16,7 @@ public class tutoringFormController {
     @FXML
     private TextField problemTopic;
     @FXML
-    private TextField description;
+    private TextArea description;
 
     // Action to handle the request button click
     @FXML

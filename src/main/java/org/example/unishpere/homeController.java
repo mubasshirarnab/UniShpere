@@ -31,10 +31,24 @@ public class homeController {
     @FXML
     public void goToServicePage(ActionEvent event) throws IOException
     {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
         FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("services.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
 
+        stage.setScene(scene);
+        stage.show();
+    }
+    @FXML
+    public void goToMessagePage(ActionEvent event) throws IOException
+    {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Navigation.pushScene(stage.getScene());
+
+        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("messagePage.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+
         stage.setScene(scene);
         stage.show();
     }
